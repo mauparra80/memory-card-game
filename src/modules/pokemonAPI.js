@@ -9,6 +9,7 @@ class Pokemon {
 }
 
 async function fetchPokemonData(id){
+  
   try{
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, { mode: 'cors' });
     
