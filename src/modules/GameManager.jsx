@@ -1,37 +1,17 @@
 import React, {useState, useEffect, useRef} from "react";
-
 import { generateRandomCollection } from "./pokemonAPI";
 import { CardsContainer } from "./CardsContainer";
 import { shufflePokemonSet } from "./Util";
 
-// class Game {
-//   constructor(cardset) {
-//     this.currentScore = 0;
-//     this.highScore = 0; //TODO: load this in
-//     this.gameWin = false;
-//     this.gameLose = false;
-//     this.cardSet = []; //TODO: Load new card set
-//     this.chosenCards = [];
-
-//     function setCardSet(newSet) {
-//       this.cardSet = newSet;
-//     }
-//   }
-// }
-// const game = new Game;
-
 let isLoading = true;
+let selectedPokemon = [];
 
 function GameManager() {
   const [chosenIds, setChosenIds] = useState([]); //change every click unless loss
   const [pokemonData, setPokemonData] = useState([]); //no change after first
-  const [selectedPokemon, setSelectedPokemon] = useState([]);
   const initialRender = useRef(true);
   const [score, setScore] = useState(0); 
   const [flipped, setFlipped] = useState(false);
-
-  console.log("gameManager setting up")
-  console.log("current selectedPokemon are ", selectedPokemon);
 
   //add point to score
   function addScore() {
@@ -39,7 +19,6 @@ function GameManager() {
     console.log("added score");
   }
   
-
   //called when card is clicked. checks if its right or wrong
   function handleCardChosen(chosenId) {
     console.log("card is clicked");
@@ -50,19 +29,19 @@ function GameManager() {
     } else {
       //add card to chosenIds
       setChosenIds((previousIds) => ([...previousIds, chosenId]));
-      setSelectedPokemon(selectPokemon(pokemonData, chosenIds));
-      setFlipped((previousFlipped) => !previousFlipped)
+      selectedPokemon = selectPokemon(pokemonData,chosenIds);
+      setFlipped((previousFlipped) => !previousFlipped);
       addScore();
     }
   }
 
+  //get pokeAPI data returns (20total, from 1, to 150) random poke
   const fetchData = async () => {
     try {
       console.log("pokemonAPI called");
-      //call api and wait
       const data = await generateRandomCollection(20, 1, 150);
       setPokemonData(data);
-      setSelectedPokemon(selectPokemon(data, []));
+      selectedPokemon = selectPokemon(data,[]);
     } catch (error) {
       console.error('API Error')
     } finally {
@@ -78,6 +57,10 @@ function GameManager() {
     }
   },[]); //empty, runs once when component mounts
 
+  function handleFlipAllCards() {
+    setFlipped((previousFlipped) => !previousFlipped);
+  }
+
 
   return (
     <div>
@@ -89,7 +72,8 @@ function GameManager() {
         <CardsContainer  
         handleCardChosen={handleCardChosen} 
         selectedPokemon={selectedPokemon}
-        flipped={flipped}
+        isFlipped={flipped}
+        handleFlipAllCards={handleFlipAllCards}
         />
         </>
       )}
@@ -111,7 +95,6 @@ function selectPokemon(pokemonData, chosenIds) {
     }
   }
   selectedPokemon = shufflePokemonSet(selectedPokemon);
-
   console.log("selectedPokemon returning from the selectPokemon function are: ", selectedPokemon);
   return selectedPokemon;
 }

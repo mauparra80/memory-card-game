@@ -39,7 +39,7 @@ body {
 justify-self: center;
 height: calc(88px * 3);
 width: calc(63px * 3);
-
+/* transform: rotateY(100deg); */
 
 
 transform-style: preserve-3d;
