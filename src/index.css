@@ -7,12 +7,17 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-pokemonYellowLight: #D5A100;
+  --color-pokemonYellow: #FFCC00;
+  --color-pokemonBlueLight: #0075BE;
+  --color-pokemonBlue: #0a285f;
 }
 
 * {

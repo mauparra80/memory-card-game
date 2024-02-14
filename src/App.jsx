@@ -30,10 +30,6 @@ function App() {
           <div className="tutorialBar">
             <h4>Try to pick all 100 gen 1 pokemon without picking the same one twice!</h4>
           </div>
-          <div className="card-container">
-            <div className="card">Card1</div>
-            <div className="card">Card2</div>
-          </div>
         </div>
         <div className="footer">Footer Stuff</div>
       </div>
