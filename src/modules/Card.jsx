@@ -1,11 +1,11 @@
 import React,{useState} from "react";
 
-function Card({handleCardChosen, pokemon, isFlipped, handleFlipAllCards}) {
+function Card({handleCardChosen, pokemon, isFlipped}) {
 
   return (
     <div key={pokemon.id} className={(isFlipped ? "flipped" : "") + " card"} onClick={() => {
        handleCardChosen(pokemon.id);
-       handleFlipAllCards();
+      //  handleFlipAllCards();
     }}>
       <div className="card-face card-front">
         <p className="cardName">{pokemon.name}</p>

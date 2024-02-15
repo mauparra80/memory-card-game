@@ -9,57 +9,59 @@ body {
 .container{
   display: flex;
   flex-direction: column;
-
-  background: color-mix(in srgb, var(--color-pokemonBlue) 80%, white);
   height: 100vh;
-
 }
 
 .body-container{
   flex: 1;
 }
 
-.cardSet {
+.cardSet, .lossScreen, .winScreen {
+  max-width: 800px;
+  margin: auto;
+  border: 10px solid rgba(255, 255, 255, 0.848);
+  background: color-mix(in srgb, var(--color-pokemonBlue) 80%, rgb(255, 255, 255));
+  border-radius: 50px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.126);
+  padding: 50px;
+}
+
+.cardSet{
   display: grid;
   grid-template-columns: repeat(3 ,1fr);
   gap: 1rem;
   justify-content: center;
   align-items: center;
-
-  max-width: 800px;
-  margin: auto;
-  border: 10px solid rgba(255, 255, 255, 0.848);
-  border-radius: 50px;
-  padding: 50px;
-
   perspective: 1000px;
 }
 
 .card {
 justify-self: center;
-height: calc(88px * 3);
-width: calc(63px * 3);
+height: calc(88px * 2.5);
+width: calc(63px * 2.5);
 /* transform: rotateY(100deg); */
-
 
 transform-style: preserve-3d;
 transition: transform 0.5s;
+}
+.card:hover{
+  cursor: pointer;
+  border: 12px;
+  font-size: 1.1rem;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.438);
 }
 
 .card-face {
   position: absolute;
   backface-visibility: hidden;
   
-  height: calc(88px * 3);
-width: calc(63px * 3);
+  height: calc(88px * 2.5);
+width: calc(63px * 2.5);
   box-shadow: 4px 5px 8px rgba(0, 0, 0, 0.456);
 border-radius: 5px;
 border: 10px solid var(--color-pokemonYellow);
 background: rgb(255,255,255);
 background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,117,190,1) 100%);
-}
-
-.card-front {
 }
 
 .card-back {
@@ -83,13 +85,48 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,117,190,1) 10
   object-fit: contain;
 }
 
+.lossScreen p, .winScreen p {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-pokemonYellow);
+  margin-bottom: 50px;
+}
+
+.scores-container {
+  display: flex;
+  justify-content: center;
+  gap: 400px;
+}
+
+.score:after{
+  content: "/20"
+}
+
+.restartGameBtn {
+  margin: 5px;
+  font-weight: 700;
+  font-size: 2rem;
+  padding: 20px 50px 20px 50px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.455);
+  border: none;
+}
+.restartGameBtn:hover{
+  background-color: white;
+  cursor: pointer;
+  outline: 2px solid white;
+  font-size: 2.1rem;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.438);
+}
+
 .header{
-  background-color: rgb(189, 163, 163);
+  margin: 20px 0px 50px 0px;
   height: 100px;
 }
 
 .footer {
-  background-color: black;
+  
   height: 50px;
 }
 
@@ -97,10 +134,20 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,117,190,1) 10
   .cardSet {
     grid-template-columns: repeat(2,1fr);
   }
+  .card, .card-face, .card-back{
+    height: calc(88px * 3);
+    width: calc(63px * 3);
+    min-width: calc(88px *3);
+    min-height: calc(63px * 3);
+  }
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .cardSet {
     grid-template-columns: repeat(1,1fr);
   }
-}
+  .card, .card-face, .card-back{
+    height: calc(88px * 4);
+    width: calc(63px * 4);
+  }
+} */
