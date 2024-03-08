@@ -1,8 +1,44 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<table>
+<tr>
+<td>
 
-Currently, two official plugins are available:
+# Memory Card Game 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+pick all 20 pokemon without repicking the same one
+
+</td>
+<td align="right">
+
+[![Live Preview](./livePreview.png)](https://memory-card-game-mpb.netlify.app/)
+
+</td>
+</tr>
+</table>
+
+
+## Skills, Techniques, and methods practiced.
+
+- React / Vite
+- css
+- Async API
+- React States
+- splitting up modules
+
+### Struggled on
+
+- adding/removing classes to animate a module while its mounted. 
+
+### Learned
+
+- state drilling
+- better use of modules
+- animating card flip
+
+## Acknowledgments
+
+  - [PokeAPI](https://pokeapi.co/) 
+
+### [Live Preview](https://memory-card-game-mpb.netlify.app/)
+
+
